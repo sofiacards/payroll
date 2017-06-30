@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', array('uses' => 'AdminController@dashboard', 'as' => 'dashboard'));
