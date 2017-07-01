@@ -43,10 +43,13 @@
         @include('nav')
         
 
-        <div id="page-wrapper" style="padding-top: 0% ">
+        <div id="page-wrapper" style="padding-top: 0%; background-color: #F0F3F4  ;">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Employees</h1>
+                </div>
+                <div class="col-lg-12">
+                  <button class="btn btn-danger m-b-30 pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> Employee</button><br><br>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -66,17 +69,18 @@
                               <th>Name</th>
                               <th>Address</th>
                               <th>Position</th>
-                              <th>Action</th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
                               <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td><a href=""><button class="btn btn-warning btn-md waves-effect waves-light m-b-30 pull-right">View Payslip</button></a></td>
+                              <td>12</td>
+                              <td>Miranda, Harrelson Tagle</td>
+                              <td>Pasig City</td>
+                              <td>TA</td>
+                              <td><a href="{{URL::Route('payslip')}}"><button class="btn btn-success m-b-30">View Payslip</button></a>
+                                  <button class="btn btn-danger m-b-30" id="delete" data-toggle="tooltip" title='Delete Employee'><span class="glyphicon glyphicon-trash"></span></button></td>
                             </tr>
                           </tbody>
                         </table> 
@@ -89,7 +93,75 @@
 
     </div>
     <!-- /#wrapper -->
-
+    <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add New Employee</h4>
+            </div>
+            <div class="modal-body">
+              <div class="col-md-12">
+                <div class="form-group col-md-4">
+                    <label class="control-label">First Name</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Middle Name</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Middle Name">
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Last Name</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Last Name">
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Department</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Department">
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Position</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Position">
+                </div>
+                <div class="form-group col-md-4">
+                  <label class='control-label' for='empPayRate'>Pay Rate</label>
+                    <div class='input-group'>
+                      <span class="input-group-addon">₱</span>
+                      <input class='form-control' name="empPayRate" id="empPayRate" min="0" max="1000000000" type='text' value="15000">
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group col-md-6">
+                    <label class="control-label">SSS no.</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="SSS no.">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label">Pag-ibig no.</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Pag-ibig no.">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label">Philhealth no.</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Philhealth no.">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label">Tin no.</label>
+                    <input type="text" name="fname" class="form-control input-xs" id="InputFName" placeholder="Tin no.">
+                </div>
+              </div>
+              <p>DAGDAG NA LANG YUNG KULANG</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Save</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <!-- End of Modal -->
 
     
 
@@ -99,21 +171,6 @@
     <script src="../assets/data/morris-data.js"></script>
     <script src="../assets/js/bootstrap-toggle.js"></script>
     <script src="{!! asset('assets/plugins/bootstrap-select/js/bootstrap-select.min.js')!!}" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        $('#navbarColor').on('change',function(){
-            // alert($(this).data('color'));
-            var bar = ($(this).val());
-            $('#navbar').css('background-color', bar);
-        });
-
-        $('.filters').on('click',function(){
-            // alert($(this).data('color'));
-            var bg = ('loginbg.jpg');
-            var bar = ($(this).data('value'));
-            $('#page-wrapper').css({background: 'linear-gradient(0deg, rgba('+bar+'), rgba('+bar+')), url("{!! asset("assets/images/'+bg+'")!!}") no-repeat center center fixed', 'background-size' : '100%'});
-        });
-    </script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip(); 
@@ -135,6 +192,37 @@
                     cell.innerHTML = i+1;
                 } );
             } ).draw();
+      });
+    </script>
+    <script type="text/javascript">
+      $('#delete').click(function(e){
+         e.preventDefault();
+        swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'Cancel!',
+          confirmButtonClass: 'btn btn-success',
+          cancelButtonClass: 'btn btn-danger',
+          buttonsStyling: false,
+          closeOnConfirm: false,
+          closeOnCancel: false
+        }, 
+        function (isConfirm){
+          if(isConfirm){
+            swal(
+            'Deleted!',
+            'Employee has been deleted.',
+            'success'
+          )
+          }else{
+            swal("Cancelled", "Something went wrong!", "error");
+          }
+        });
       });
     </script>
 

@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', array('uses' => 'AdminController@dashboard', 'as' => 'dashboard'));
+Route::get('/payslip', array('uses' => 'AdminController@payslip', 'as' => 'payslip'));

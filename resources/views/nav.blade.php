@@ -38,7 +38,6 @@
 <style type="text/css">
 
     div h1{
-        -webkit-text-stroke: 1px white;
         color:  black;
     }
 
@@ -84,22 +83,6 @@
         color: #fff;
         top: 5px;
     }
-    .btn-barangay {
-      color: #fff;
-      background-color: #CA3AED;
-      border-color: #4cae4c;
-    }
-    .btn-barangay:focus,
-    .btn-barangay.focus {
-      color: #fff;
-      background-color: #AB31C8;
-      border-color: #982AB2 ;
-    }
-    .btn-barangay:hover {
-      color: #fff;
-      background-color: #AB31C8;
-      border-color: #982AB2;
-    }
 
     .scrollable-menu {
     height: auto;
@@ -141,7 +124,7 @@
     }
 
 /* Extra Things */
-body{background: #eee ;font-family: 'Open Sans', sans-serif;}h3{font-size: 30px; font-weight: 400;text-align: center;margin-top: 50px;}h3 i{color: #444;}
+body{background: #B3B6B7   ;font-family: 'Open Sans', sans-serif;}h3{font-size: 30px; font-weight: 400;text-align: center;margin-top: 50px;}h3 i{color: #444;}
 </style>
 
 <nav class="navbar navbar-inverse">

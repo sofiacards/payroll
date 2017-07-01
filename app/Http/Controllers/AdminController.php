@@ -16,5 +16,8 @@ class AdminController extends Controller
 	public function dashboard(){
 		return view('dashboard');
    }
+   public function payslip(){
+		return view('payslip');
+   }
 
 }
